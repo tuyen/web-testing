@@ -1,6 +1,6 @@
 package dto;
 
-public class HocSinh {
+public class dtoHocSinh {
 	private String MaHS;
 	private String HoTen;
 	private String NgaySinh;

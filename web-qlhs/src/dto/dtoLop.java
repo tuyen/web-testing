@@ -1,6 +1,6 @@
 package dto;
 
-public class Lop {
+public class dtoLop {
 	private String MaLop;
 	private String TenLop;
 	private String GiaoVien;

@@ -1,6 +1,6 @@
 package dto;
 
-public class Diem {
+public class dtoDiem {
 	private String MaHS;
 	private String MaLop;
 	private String Toan;

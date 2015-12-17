@@ -6,10 +6,7 @@ public class dtoDiem {
 	private String Toan;
 	private String TiengViet;
 	private String TapLamVan;
-	private String TheDuc;
-	private String TapDoc;
-	private String TapVe;
-	private String TapHat;
+	
 	public String getMaHS() {
 		return MaHS;
 	}
@@ -39,29 +36,5 @@ public class dtoDiem {
 	}
 	public void setTapLamVan(String tapLamVan) {
 		TapLamVan = tapLamVan;
-	}
-	public String getTheDuc() {
-		return TheDuc;
-	}
-	public void setTheDuc(String theDuc) {
-		TheDuc = theDuc;
-	}
-	public String getTapDoc() {
-		return TapDoc;
-	}
-	public void setTapDoc(String tapDoc) {
-		TapDoc = tapDoc;
-	}
-	public String getTapVe() {
-		return TapVe;
-	}
-	public void setTapVe(String tapVe) {
-		TapVe = tapVe;
-	}
-	public String getTapHat() {
-		return TapHat;
-	}
-	public void setTapHat(String tapHat) {
-		TapHat = tapHat;
-	}
+	}	
 }

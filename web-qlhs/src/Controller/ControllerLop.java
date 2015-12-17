@@ -1,28 +1,23 @@
 package Controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.ModelLop;
-import dto.dtoLop;
-
 /**
- * Servlet implementation class ControllerDSLop
+ * Servlet implementation class ControllerLop
  */
-@WebServlet("/ControllerDSLop")
-public class ControllerDSLop extends HttpServlet {
+@WebServlet("/ControllerLop")
+public class ControllerLop extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private ModelLop mdLop = new ModelLop();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ControllerDSLop() {
+    public ControllerLop() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +29,7 @@ public class ControllerDSLop extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		request.getRequestDispatcher("view/dslop.jsp").include(request, response);
+		request.getRequestDispatcher("view/lop.jsp").include(request, response);
 	}
 
 	/**
@@ -42,18 +37,6 @@ public class ControllerDSLop extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		if(request.getParameter("btnSubmit") != null){
-			dtoLop lop = new dtoLop();
-			lop.setGiaoVien(request.getParameter("txtGV"));			
-			lop.setTenLop(request.getParameter("txtLop"));
-			lop.setNamHoc(request.getParameter("txtnh"));
-			lop.setSiSo(request.getParameter("txtss"));
-			mdLop.AddLop(lop);
-		}
-		
-		request.getRequestDispatcher("view/dslop.jsp").include(request, response);
 	}
 
 }

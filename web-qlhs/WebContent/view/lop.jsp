@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Danh sách lớp - Quản Lý Học Sinh</title>
+<title>Thông tin lớp - Quản Lý Học Sinh</title>
 <script type="text/javascript"
 	src="view/resource/lib/jquery-2.1.4.min.js"></script>
 <script type="text/javascript"
@@ -85,12 +85,12 @@
 											{
 												"order" : [ [ 0, "asc" ] ],
 												"language" : {
-													"lengthMenu" : "Hiển thị _MENU_ lớp",
+													"lengthMenu" : "Hiển thị _MENU_ học sinh",
 													"zeroRecords" : "Chưa có dữ liệu",
 													"search" : "Tìm kiếm:",
-													"info" : "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ lớp",
+													"info" : "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ học sinh",
 													"infoEmpty" : "Chưa có dữ liệu",
-													"infoFiltered" : "(Lọc từ _MAX_ lớp)",
+													"infoFiltered" : "(Lọc từ _MAX_ học sinh)",
 													"paginate" : {
 														"first" : "Trang đầu",
 														"last" : "Trang cuối",

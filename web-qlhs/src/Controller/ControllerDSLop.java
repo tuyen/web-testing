@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ControllerHome
+ * Servlet implementation class ControllerDSLop
  */
-@WebServlet("/ControllerHome")
-public class ControllerHome extends HttpServlet {
+@WebServlet("/ControllerDSLop")
+public class ControllerDSLop extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public ControllerHome() {
+    public ControllerDSLop() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -28,7 +29,7 @@ public class ControllerHome extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		request.getRequestDispatcher("view/home.jsp").include(request, response);
+		request.getRequestDispatcher("view/dslop.jsp").include(request, response);
 	}
 
 	/**

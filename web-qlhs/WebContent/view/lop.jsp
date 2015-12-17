@@ -1,3 +1,7 @@
+<%@page import="dto.dtoDiem"%>
+<%@page import="Model.ModelDiem"%>
+<%@page import="Model.ModelHS"%>
+<%@page import="dto.dtoHocSinh"%>
 <%@page import="Model.ModelLop"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.dtoLop"%>
@@ -23,33 +27,49 @@
 	src="view/resource/DataTables-1.10.9/js/jquery.dataTables.min.js"></script>
 </head>
 <%
-	List<dtoLop> dslop = new ArrayList<dtoLop>();
-	ModelLop mdl = new ModelLop();
-	dslop = mdl.GetDSLop();
+	List<dtoHocSinh> dshs = new ArrayList<dtoHocSinh>();
+	ModelHS mdhs = new ModelHS();
+	String malop = request.getParameter("lop");
+	dshs = mdhs.getDSHS(malop);
+	
+	ModelLop mdl = new ModelLop();	
+	dtoLop lop = mdl.GetLop(malop);
+	
+	ModelDiem mdd = new ModelDiem();
 %>
 <body>
 	<div class="container" style = "padding-top:30px;">
 		<div class="row">
-			<div class="col-md-8">
-				<h3>Danh sách lớp</h3>
+			<div class="col-md-8">				
+				<h3>Lớp <%=lop.getTenLop() %></h3>
+				<div style = "display:inline;">
+					<p><b>Sỉ số: </b>  <%=lop.getSiSo() %> </p>
+					<p><b>Giáo viên: </b>  <%=lop.getGiaoVien() %> </p>
+					<p><b>Năm học: </b>  <%=lop.getNamHoc() %> </p>
+				</div>
+				<h3>Danh sách học sinh</h3>
 				<table id="tpost"
 					class="table table-striped table-bordered table-hover "
 					width="100%">
 					<thead>
 						<tr>
-							<th>Lớp</th>
-							<th>Sỉ số</th>
-							<th>Giáo viên</th>
-							<th>Năm học</th>
+							<th>STT</th>
+							<th>Họ tên</th>
+							<th>Toán</th>
+							<th>Tiếng Việt</th>
+							<th>Tập làm văn</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%
-							for(dtoLop lop : dslop){
-								out.write("<tr><td><a href='"+request.getContextPath() + "/ControllerLop?lop=" + lop.getMaLop() + "'>"+ lop.getTenLop()+"</a></td>");
-								out.write("<td>"+lop.getSiSo()+"</td>");
-								out.write("<td>"+lop.getGiaoVien()+"</td>");
-								out.write("<td>"+lop.getNamHoc()+"</td></tr>");
+							dtoDiem d = new dtoDiem();
+							for(dtoHocSinh hs : dshs){
+								out.write("<tr><td>" + hs.getMaHS() +"</td>");
+								out.write("<td><a href='"+request.getContextPath() + "/ControllerHS?hs=" + hs.getMaHS() + "'>"+ hs.getHoTen()+"</a></td>");
+								d = mdd.getDiem(hs.getMaHS(), malop);
+								out.write("<td>"+d.getToan()+"</td>");
+								out.write("<td>"+d.getTiengViet()+"</td>");
+								out.write("<td>"+d.getTapLamVan()+"</td></tr>");
 							}
 						%>
 					</tbody>
@@ -57,17 +77,24 @@
 			</div>
 			<div class="col-md-4" style = "border-left: thin solid;border-left-color: black;">
 				<div class = "form-group">
-					<h3>Thêm lớp học</h3>
-					<form role = "form form-inline" class = "form" action="ControllerDSLop" method = "POST">
-						<label for = "txtLop">Tên lớp</label>
-						<input required class="form-control" id = "txtLop" name = "txtLop" type="text" placeholder = "1A">
-						<label for = "txtGV">Giáo viên</label>
-						<input required class="form-control" id = "txtGV" name = "txtGV" type="text" placeholder = "Nguyễn Thanh Anh Tuyên">
-						<label for = "txtss">Sỉ số</label>
-						<input required class="form-control" id = "txtss" name = "txtss" type="number" placeholder = "30">
-						<label for = "txtnh">Năm học</label>
-						<input required class="form-control" id = "txtnh" name = "txtnh" type="text" placeholder = "2015">
-						<input class = "form-control btn btn-primary" style = "margin-top:10px;" type = "submit" name = "btnSubmit" value = "Thêm lớp">
+					<h3>Cập nhật điểm số</h3>
+					<form role = "form form-inline" class = "form" action="ControllerLop" method = "POST">
+						<label for = "txths">Học sinh</label>
+						<select class="form-control" id = "txths" name = "txths">
+							<%
+								for(dtoHocSinh hs : dshs){
+									out.write("<option value = '"+hs.getMaHS()+"'> "+hs.getHoTen()+"</option>");
+								}
+							%>							
+						</select>
+						<label for = "txtToan">Toán</label>
+						<input required class="form-control" id = "txtToan" name = "txtToan" type="number" placeholder = "10">
+						<label for = "txtTV">Tiếng Việt</label>
+						<input required class="form-control" id = "txtTV" name = "txtTV" type="number" placeholder = "10">
+						<label for = "txttlv">Tập làm văn</label>
+						<input required class="form-control" id = "txttlv" name = "txttlv" type="number" placeholder = "10">						
+						<input type = "text" style = "display: none" value = "<%=malop %>" id = "txtmalop" name = "txtmalop">
+						<input class = "form-control btn btn-primary" style = "margin-top:10px;" type = "submit" name = "btnSubmit" value = "Cập nhật điểm">
 					</form>
 				</div>
 			</div>

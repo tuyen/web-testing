@@ -37,6 +37,27 @@ public class ModelLop extends Model {
 		}
 		return dslop;
 	}
+	
+	public dtoLop GetLop(String malop) {		
+		String sql = "select * from lop where malop = " + malop;
+		dtoLop lop = new dtoLop();
+		if (connection.connect()) {
+			ResultSet rs = connection.read(sql);
+			try {
+				while (rs.next()) {
+					lop.setGiaoVien(rs.getString("giaovien"));
+					lop.setMaLop(rs.getString("malop"));
+					lop.setNamHoc(rs.getString("namhoc"));
+					lop.setSiSo(rs.getString("siso"));
+					lop.setTenLop(rs.getString("tenlop"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return lop;
+	}
 
 	public void AddLop(dtoLop lop) {
 		String sql = "INSERT INTO `lop`(`tenlop`, `giaovien`, `namhoc`, `siso`) VALUES ('"

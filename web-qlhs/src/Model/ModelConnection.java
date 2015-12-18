@@ -13,7 +13,6 @@ public class ModelConnection
 	public final String userName = "root";
 	public final String password = "";
 	private Connection connection = null;
-	private PreparedStatement preStatement = null;
 
 	public ModelConnection()
 	{
@@ -23,17 +22,7 @@ public class ModelConnection
 	public Connection getConnection()
 	{
 		return connection;
-	}
-
-	public PreparedStatement getPrepareStatement()
-	{
-		return preStatement;
-	}
-
-	public void setPrepareStatement(PreparedStatement pre)
-	{
-		this.preStatement = pre;
-	}
+	}	
 
 	public Boolean connect()
 	{
@@ -72,21 +61,7 @@ public class ModelConnection
 			// TODO Auto-generated catch block
 		}
 		return data;
-	}
-
-	public ResultSet readSecure()
-	{
-		ResultSet data = null;
-		try
-		{
-			data = preStatement.executeQuery();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return data;
-	}
+	}	
 
 	public int write(String sql)
 	{
@@ -102,20 +77,6 @@ public class ModelConnection
 			e.printStackTrace();
 		}
 		return 0;
-	}
-
-	public Boolean writeSecure()
-	{
-		try
-		{
-			this.preStatement.execute();
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		return true;
 	}
 
 	public void close()

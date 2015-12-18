@@ -74,12 +74,12 @@ public class ModelDiem extends Model {
 		return dsd;
 	}
 
-	public void updateDiem(dtoDiem d) {
+	public int updateDiem(dtoDiem d) {
 		String sql = "UPDATE `diem` SET `toan`=" + d.getToan()
 				+ ",`tiengviet`=" + d.getTiengViet() + ",`taplamvan`="
 				+ d.getTapLamVan() + " WHERE `diem`.`mahs` = " + d.getMaHS()
 				+ " AND `diem`.`malop` = " + d.getMaLop();
 		connection.connect();
-		connection.write(sql);
+		return connection.write(sql);		
 	}
 }

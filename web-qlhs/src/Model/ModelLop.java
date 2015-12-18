@@ -59,16 +59,18 @@ public class ModelLop extends Model {
 		return lop;
 	}
 
-	public void AddLop(dtoLop lop) {
+	public int AddLop(dtoLop lop) {
 		String sql = "INSERT INTO `lop`(`tenlop`, `giaovien`, `namhoc`, `siso`) VALUES ('"
 				+ lop.getTenLop()
 				+ "','"
 				+ lop.getGiaoVien()
 				+ "','"
 				+ lop.getNamHoc() + "'," + lop.getSiSo() + ")";
+		int rs = 0;
 		if(connection.connect()){
-			connection.write(sql);
+			rs = connection.write(sql);
 			connection.close();
 		}
+		return rs;
 	}
 }

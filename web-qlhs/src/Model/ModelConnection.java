@@ -19,11 +19,6 @@ public class ModelConnection
 
 	}
 
-	public Connection getConnection()
-	{
-		return connection;
-	}	
-
 	public Boolean connect()
 	{
 		try

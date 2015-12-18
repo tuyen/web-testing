@@ -27,7 +27,7 @@ public class ModelHS extends Model{
 	public boolean add(dtoHocSinh hs)
 	{
 		int x = 0;
-		String id = "";
+		String id = "";		
 		ModelDiem diem = new ModelDiem();
 		if(con.connect())
 		{
@@ -40,16 +40,13 @@ public class ModelHS extends Model{
 					ResultSet rs = con.read(sql);
 					if(rs.next())
 					{						
-						id =  rs.getString("id");
+						id =  rs.getString("id");						
 						diem.create(id, hs.getLop());
 					}
 					
-				}				
-				
-				
+				}												
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			}
 			con.close();
 		}

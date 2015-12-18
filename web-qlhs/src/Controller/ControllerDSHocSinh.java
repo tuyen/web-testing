@@ -44,6 +44,8 @@ public class ControllerDSHocSinh extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		
+		
 		request.getRequestDispatcher("view/dshocsinh.jsp").include(request, response);
 	}
 

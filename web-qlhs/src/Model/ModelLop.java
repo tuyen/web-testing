@@ -32,7 +32,8 @@ public class ModelLop extends Model {
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				
 			}
 		}
 		return dslop;

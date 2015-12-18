@@ -59,21 +59,21 @@ public class ModelConnectionTest {
 	public void testWrite() {
 		assertTrue("ModelConnectionTest/testWrite ", mdc.connect());
 		int x = mdc.write("update hocsinh set hoten = 'tuyen' where mahs = 1");
-		assertEquals(1, x);
+		assertEquals("ModelConnectionTest/testWrite ",1, x);
 	}
 	
 	@Test
 	public void testWrite1() {
 		assertTrue("ModelConnectionTest/testWrite1 ", mdc.connect());
 		int x = mdc.write("update hocsinh set hoten = 'tuyen' where mahs = 100");
-		assertEquals(0, x);
+		assertEquals("ModelConnectionTest/testWrite1 ",1, x);
 	}
 	
 	@Test
 	public void testWrite2() {
 		assertTrue("ModelConnectionTest/testWrite2 ", mdc.connect());
 		int x = mdc.write("update hocsinh set hoten = 'tuyen' wheremahs = 100");
-		assertEquals(1, x);
+		assertEquals("ModelConnectionTest/testWrite2 ",1, x);
 	}
 
 	@Test
@@ -81,7 +81,7 @@ public class ModelConnectionTest {
 		assertTrue("ModelConnectionTest/testClose ", mdc.connect());
 		mdc.close();
 		int x = mdc.write("update hocsinh set hoten = 'tao lao' where mahs = 1");
-		assertEquals(0, x);
+		assertEquals("ModelConnectionTest/testClose ",0, x);
 	}
 
 }

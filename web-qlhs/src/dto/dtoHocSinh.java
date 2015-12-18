@@ -9,6 +9,13 @@ public class dtoHocSinh {
 	private String TonGiao;
 	private String DiaChi;
 	private String Sdt;
+	private String Lop;
+	public String getLop() {
+		return Lop;
+	}
+	public void setLop(String lop) {
+		Lop = lop;
+	}
 	public String getMaHS() {
 		return MaHS;
 	}

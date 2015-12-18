@@ -5,13 +5,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+	
+
 import dto.dtoDiem;
 
 public class ModelDiem extends Model {
 
+
 	public ModelDiem() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public boolean create(String id, String malop)
+	{
+		int row = 0;
+		if(connection.connect())
+		{
+			String sql = "INSERT INTO `diem`(`mahs`, `malop`, `toan`, `tiengviet`, `taplamvan`) VALUES ("+id+","+malop+","+0+","+0+","+0+")";
+			row = connection.write(sql);
+			connection.close();
+		}
+		return row > 0;
 	}
 
 	public dtoDiem getDiem(String mahs, String malop) {

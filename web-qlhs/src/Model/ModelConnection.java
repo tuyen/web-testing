@@ -88,19 +88,20 @@ public class ModelConnection
 		return data;
 	}
 
-	public Boolean write(String sql)
+	public int write(String sql)
 	{
 		try
 		{
 			java.sql.Statement cmd = connection.createStatement();
-			return cmd.execute(sql);
+			
+			return cmd.executeUpdate(sql);
 
 		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return true;
+		return 0;
 	}
 
 	public Boolean writeSecure()

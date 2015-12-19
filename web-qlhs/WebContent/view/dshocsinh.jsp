@@ -26,6 +26,12 @@
 				<h2>Quản lý học sinh</h2>
 			</center>
 		</div>
+		<p>
+			<%
+				if(request.getAttribute("ss") != null)
+					out.write(request.getAttribute("ss").toString());
+			%>
+		</p>
 		<div class="panel panel-default">
 			<div class="panel-heading">Nhập học sinh</div>
 			<div class="panel-body">
@@ -99,6 +105,12 @@
 			</div>
 		</div>
 
+		<p>
+			<%
+				if(request.getAttribute("count") != null)
+					out.write("Có "+request.getAttribute("count").toString() + " đã được chuyển lớp");
+			%>
+		</p>
 		<div class="panel panel-default">
 			<div class="panel-heading">Chuyển lớp</div>
 			<div class="panel-body">

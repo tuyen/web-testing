@@ -67,13 +67,17 @@ public class ControllerDSHocSinh extends HttpServlet {
 			ModelHS hs = new ModelHS();
 			ModelDiem diem = new ModelDiem();
 			List<dtoHocSinh> ds = hs.getDSHS(from);
+			int count = 0;
 			for(dtoHocSinh i : ds)
 			{
 				dtoDiem d = diem.getDiem(i.getMaHS(),from);				
 				int tb= Integer.parseInt(d.getTapLamVan())+Integer.parseInt(d.getTiengViet())+Integer.parseInt(d.getToan());
-				if(tb >= 15)
+				if(tb >= 15){
 					diem.create(i.getMaHS(), to);
-			}						
+					count++;
+				}
+			}				
+			request.setAttribute("count", count);
 		}
 		
 		if(request.getParameter("btn_submit")!= null)
@@ -98,7 +102,10 @@ public class ControllerDSHocSinh extends HttpServlet {
 			dto.setSdt(sdt);
 			
 			ModelHS model = new ModelHS();
-			model.add(dto);
+			if(model.add(dto))
+				request.setAttribute("ss", "Thêm thành công");
+			else
+				request.setAttribute("ss", "Thêm thất bại");
 		}
 		
 		

@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import Model.ModelDiem;
 import dto.dtoDiem;
@@ -52,6 +54,8 @@ public class ControllerLop extends HttpServlet {
 			d.setTiengViet(request.getParameter("txtTV"));
 			d.setToan(request.getParameter("txtToan"));
 			mdd.updateDiem(d);
+			HttpSession session  = request.getSession();
+			session.setAttribute("turn", "ok");
 		}
 		
 //		request.getRequestDispatcher("view/lop.jsp").include(request, response);

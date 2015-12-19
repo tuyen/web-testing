@@ -35,6 +35,7 @@ public class ModelLop extends Model {
 				
 				
 			}
+			connection.close();
 		}
 		return dslop;
 	}

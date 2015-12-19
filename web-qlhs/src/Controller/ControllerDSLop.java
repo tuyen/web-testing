@@ -44,15 +44,23 @@ public class ControllerDSLop extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		int num_row = 0;
 		if(request.getParameter("btnSubmit") != null){
 			dtoLop lop = new dtoLop();
 			lop.setGiaoVien(request.getParameter("txtGV"));			
 			lop.setTenLop(request.getParameter("txtLop"));
 			lop.setNamHoc(request.getParameter("txtnh"));
 			lop.setSiSo(request.getParameter("txtss"));
-			mdLop.AddLop(lop);
+			num_row = mdLop.AddLop(lop);
 		}
-		
+		if(num_row > 0)
+		{
+			request.setAttribute("add_status", "yes");			
+		}
+		else
+		{
+			request.setAttribute("add_status", "no");
+		}
 		request.getRequestDispatcher("view/dslop.jsp").include(request, response);
 	}
 

@@ -28,7 +28,7 @@
 	dslop = mdl.GetDSLop();
 %>
 <body>
-	<div class="container" style = "padding-top:30px;">
+	<div class="container" style="padding-top: 30px;">
 		<div class="row">
 			<div class="col-md-8">
 				<h3>Danh sách lớp</h3>
@@ -46,29 +46,53 @@
 					<tbody>
 						<%
 							for(dtoLop lop : dslop){
-								out.write("<tr><td><a href='"+request.getContextPath() + "/ControllerLop?lop=" + lop.getMaLop() + "'>"+ lop.getTenLop()+"</a></td>");
-								out.write("<td>"+lop.getSiSo()+"</td>");
-								out.write("<td>"+lop.getGiaoVien()+"</td>");
-								out.write("<td>"+lop.getNamHoc()+"</td></tr>");
-							}
+												out.write("<tr><td><a href='"+request.getContextPath() + "/ControllerLop?lop=" + lop.getMaLop() + "'>"+ lop.getTenLop()+"</a></td>");
+												out.write("<td>"+lop.getSiSo()+"</td>");
+												out.write("<td>"+lop.getGiaoVien()+"</td>");
+												out.write("<td>"+lop.getNamHoc()+"</td></tr>");
+											}
 						%>
 					</tbody>
 				</table>
 			</div>
-			<div class="col-md-4" style = "border-left: thin solid;border-left-color: black;">
-				<div class = "form-group">
+			<div class="col-md-4"
+				style="border-left: thin solid; border-left-color: black;">
+				<div class="form-group">
 					<h3>Thêm lớp học</h3>
-					<form role = "form form-inline" class = "form" action="ControllerDSLop" method = "POST">
-						<label for = "txtLop">Tên lớp</label>
-						<input required class="form-control" id = "txtLop" name = "txtLop" type="text" placeholder = "1A">
-						<label for = "txtGV">Giáo viên</label>
-						<input required class="form-control" id = "txtGV" name = "txtGV" type="text" placeholder = "Nguyễn Thanh Anh Tuyên">
-						<label for = "txtss">Sỉ số</label>
-						<input required class="form-control" id = "txtss" name = "txtss" type="number" placeholder = "30">
-						<label for = "txtnh">Năm học</label>
-						<input required class="form-control" id = "txtnh" name = "txtnh" type="text" placeholder = "2015">
-						<input class = "form-control btn btn-primary" style = "margin-top:10px;" type = "submit" name = "btnSubmit" value = "Thêm lớp">
+					<form role="form form-inline" class="form" action="ControllerDSLop"
+						method="POST">
+						<label for="txtLop">Tên lớp</label> <input required
+							class="form-control" id="txtLop" name="txtLop" type="text"
+							placeholder="1A"> <label for="txtGV">Giáo viên</label> <input
+							required class="form-control" id="txtGV" name="txtGV" type="text"
+							placeholder="Nguyễn Thanh Anh Tuyên"> <label for="txtss">Sỉ
+							số</label> <input required class="form-control" id="txtss" name="txtss"
+							type="number" placeholder="30"> <label for="txtnh">Năm
+							học</label> <input required class="form-control" id="txtnh" name="txtnh"
+							type="text" placeholder="2015"> <input
+							class="form-control btn btn-primary" style="margin-top: 10px;"
+							type="submit" name="btnSubmit" value="Thêm lớp">
 					</form>
+					<br>
+					
+					<%
+						String rs =  (String)request.getAttribute("add_status");
+						if(rs!= null)
+						{
+							if(rs.equals("yes"))
+							{
+								out.print("<p id = 'result'>* Thêm thành công!</p>");
+							}
+							else
+							{
+								out.print("<p id = 'result'>* Thêm không thành công!</p>");
+							}
+						}
+						else
+						{
+							out.print("<p id = 'result'></p>");
+						}
+					%>
 				</div>
 			</div>
 		</div>

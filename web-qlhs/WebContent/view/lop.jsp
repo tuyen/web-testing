@@ -95,6 +95,14 @@
 						<input required class="form-control" id = "txttlv" name = "txttlv" type="number" placeholder = "10">						
 						<input type = "text" style = "display: none" value = "<%=malop %>" id = "txtmalop" name = "txtmalop">
 						<input class = "form-control btn btn-primary" style = "margin-top:10px;" type = "submit" name = "btnSubmit" value = "Cập nhật điểm">
+						<% 
+							String ok = (String)session.getAttribute("turn");
+							if ("ok".equals(ok))
+							{
+								out.write("<label>Cập nhật thành công </label>");
+							}
+						%>
+						
 					</form>
 				</div>
 			</div>

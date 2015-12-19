@@ -32,7 +32,7 @@ public class ModelLopTest {
 		assertEquals(1,mdl.AddLop(lop));
 		List<dtoLop> dsl2 = mdl.GetDSLop();		
 		assertNotNull("ModelLopTest/testGetDSLop ", dsl2);
-		assertEquals(dsl1.size() + 1, dsl2.size());
+		assertEquals("ModelLopTest/testGetDSLop ",dsl1.size() + 1, dsl2.size());
 	}
 
 	@Test

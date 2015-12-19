@@ -19,11 +19,11 @@
 		<center>
 			<div style="margin: 0 auto; margin-top: 30px; display:inline-block;">
 				<form action="ControllerDSLop" style = "margin:10px">
-					<button type="submit"  style = "background-image: url('view/resource/img/mm.jpg');"  class="btn btn-default btn-circle btn-xl">
+					<button type="submit" name="btn2"  style = "background-image: url('view/resource/img/mm.jpg');"  class="btn btn-default btn-circle btn-xl">
 						Lớp học</button>
 				</form>
-				<form action="Controller"style = "margin:10px">
-					<button title = "Học sinh" style = "background-image: url('view/resource/img/mn.jpg');" type="button" class="btn btn-default btn-circle btn-xl">
+				<form action="ControllerDSHocSinh"style = "margin:10px">
+					<button name="btn1" title = "Học sinh" style = "background-image: url('view/resource/img/mn.jpg');" type="button" class="btn btn-default btn-circle btn-xl">
 						Học sinh</button>
 				</form>				
 			</div>

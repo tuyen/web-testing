@@ -74,11 +74,18 @@
 							<td colspan="6" width="100%"><hr></td>
 						</tr>
 						<tr>
+							<%
+								ModelLop lop = new ModelLop();
+								List<dtoLop> dslop = lop.GetDSLop();
+							%>
 							<td>Chọn lớp:</td>
 							<td><select name="lop">
-									<option value="1">1B</option>
-									<option value="2">1C</option>
-									<option value="3">1A</option>
+									<%
+										for (dtoLop l : dslop) {
+											out.print("<option value=\"" + l.getMaLop() + "\">"
+													+ l.getTenLop() + "</option>");
+										}
+									%>
 							</select></td>
 							<td></td>
 							<td><input type="submit" value="Thêm học sinh"
@@ -95,11 +102,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Chuyển lớp</div>
 			<div class="panel-body">
-				<%
-					ModelLop lop = new ModelLop();
-					List<dtoLop> dslop = lop.GetDSLop();
-				%>
-				<form  action="ControllerDSHocSinh" method="post">
+
+				<form action="ControllerDSHocSinh" method="post">
 					<table border="0" width="30%">
 						<tr>
 							<td width="50%">Từ lớp</td>
@@ -127,8 +131,8 @@
 
 						<tr>
 							<td></td>
-							<td><br>
-							<input type="submit" name="btn_change" value="Chuyển"></td>
+							<td><br> <input type="submit" name="btn_change"
+								value="Chuyển"></td>
 						</tr>
 					</table>
 				</form>
@@ -163,7 +167,8 @@
 						for (dtoHocSinh i : ds) {
 							out.print("<tr>");
 							out.print("<td>" + i.getMaHS() + "</td>");
-							out.print("<td>" + i.getHoTen() + "</td>");
+							out.print("<td><a href='ControllerHS?hs=" + i.getMaHS() + "'>"
+									+ i.getHoTen() + "</a></td>");
 							out.print("<td>" + i.getNgaySinh() + "</td>");
 							out.print("<td>" + i.getGioiTinh() + "</td>");
 							out.print("<td>" + i.getDanToc() + "</td>");
